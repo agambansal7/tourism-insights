@@ -51,7 +51,7 @@ export default function Home() {
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold">Global Tourism Insights</Link>
             <nav className="flex gap-6">
-              <Link href="/tourism-trends" className="font-semibold">Tourism Trends</Link>
+              <Link href="/tourism-trends" className="font-semibold">Tourism Overview</Link>
               <Link href="/direct-flights" className="font-semibold">Direct Flights Impact</Link>
               <Link href="/currency-impact" className="font-semibold">Currency Strength Impact</Link>
             </nav>
@@ -153,7 +153,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-800">Global Tourism Trends (1994-2022)</h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">Global Tourism Overview (1994-2022)</h3>
                   <p className="text-gray-700 mb-4">
                     Explore how global tourism has evolved over nearly three decades, including the dramatic impact of the COVID-19 pandemic and the ongoing recovery.
                   </p>
@@ -259,7 +259,7 @@ export default function Home() {
             </div>
             <div className="flex gap-8">
               <Link href="/" className="hover:underline">Home</Link>
-              <Link href="/tourism-trends" className="hover:underline">Tourism Trends</Link>
+              <Link href="/tourism-trends" className="hover:underline">Tourism Overview</Link>
               <Link href="/direct-flights" className="hover:underline">Direct Flights Impact</Link>
               <Link href="/currency-impact" className="hover:underline">Currency Strength Impact</Link>
             </div>
