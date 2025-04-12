@@ -5,6 +5,7 @@ import { ResponsiveGeoMap } from '@nivo/geo'
 import { ResponsiveLine } from '@nivo/line'
 import Link from 'next/link'
 import Image from 'next/image'
+import ViewHtml from '@/hooks/inject-html';
 
 export default function CurrencyImpact() {
   const [selectedYear, setSelectedYear] = useState("2019")
@@ -124,31 +125,12 @@ export default function CurrencyImpact() {
           <div className="container mx-auto px-4">
             <div className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">Currency-Tourism Correlation</h2>
-              <div className="h-[500px] relative bg-white border border-gray-200 rounded-lg p-6">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center max-w-2xl">
-                    <div className="flex justify-center mb-8">
-                      <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-                        <span className="text-blue-600 text-2xl font-bold">0.42</span>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Moderate Positive Correlation</h3>
-                    <p className="text-gray-700 text-lg mb-4">Between currency weakening (against USD) and tourism growth</p>
-                    <div className="grid grid-cols-2 gap-4 text-left mt-6">
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <h4 className="font-semibold text-gray-800 mb-2">X-axis</h4>
-                        <p className="text-gray-700">Currency percent change compared to USD</p>
-                        <p className="text-sm text-gray-500 mt-1">Positive values: USD strengthened</p>
-                      </div>
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-100">
-                        <h4 className="font-semibold text-gray-800 mb-2">Y-axis</h4>
-                        <p className="text-gray-700">Tourism percent change from previous year</p>
-                        <p className="text-sm text-gray-500 mt-1">Positive values: More visitors</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <iframe
+                  src="/currency_scatterplot.html"
+                  width="100%"
+                  height="600px"
+                  style={{ border: 'none' }}
+              />
               <div className="mt-4 text-gray-700">
                 <p className="text-lg">This visualization represents the correlation between currency strength and tourism. Each point in the analysis represents a country, with the y-axis showing the tourism percent change from the previous year and the x-axis showing the currency percent change compared to the USD.</p>
                 <p className="mt-2 text-lg">A positive correlation (0.42) suggests that as a country's currency weakens against the USD (making it cheaper for American tourists), tourism tends to increase. However, the relationship is complex and varies by region and other factors.</p>
