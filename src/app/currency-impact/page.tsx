@@ -18,7 +18,7 @@ export default function CurrencyImpact() {
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold">Global Tourism Insights</Link>
             <nav className="flex gap-6">
-              <Link href="/tourism-trends" className="font-semibold">Tourism Trends</Link>
+              <Link href="/tourism-trends" className="font-semibold">Tourism Overview</Link>
               <Link href="/direct-flights" className="font-semibold">Direct Flights Impact</Link>
               <Link href="/currency-impact" className="font-semibold underline">Currency Strength Impact</Link>
             </nav>
@@ -38,42 +38,59 @@ export default function CurrencyImpact() {
           </div>
         </section>
 
-        {/* Filters Panel */}
-        <section className="py-6 bg-white border-b">
+        {/* Side-by-Side Maps */}
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap gap-6 items-end">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Year:</label>
-                <select 
-                  value={selectedYear}
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700"
-                >
-                  <option value="2017">2017</option>
-                  <option value="2018">2018</option>
-                  <option value="2019">2019</option>
-                  <option value="2020">2020</option>
-                  <option value="2021">2021</option>
-                </select>
+            <div className="bg-white rounded-xl shadow-md p-6 mb-8 border border-gray-200">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">World View of Currency and Visitors</h2>
+              <div className="mt-6 text-gray-700">
+                <p className="text-lg">These maps show the relationship between currency strength changes and visitor numbers. The top map shows changes in visitor numbers compared to the previous year, while the bottom map shows currency percent changes relative to the USD.</p>
+                <p className="mt-2 text-lg">When comparing these maps, you can observe patterns that suggest how currency strength may influence tourism decisions. For example, many European countries experienced both a strengthening USD (making travel cheaper for Americans) and an increase in visitors.</p>
               </div>
-            </div>
-          </div>
-        </section>
-       
-        {/* Currency Map */}
-        <section className="py-12 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800">Currency-Tourism Correlation</h2>
-              <iframe
-                  src="/currency_map.html"
-                  width="100%"
-                  height="600px"
-                  style={{ border: 'none' }}
-              />
-              <div className="mt-4 text-gray-700">
-                <p className="text-lg">This visualization represents the correlation between currency strength and tourism. Each point in the analysis represents a country, with the y-axis showing the tourism percent change from the previous year and the x-axis showing the currency percent change compared to the USD.</p>
-                <p className="mt-2 text-lg">A positive correlation (0.42) suggests that as a country's currency weakens against the USD (making it cheaper for American tourists), tourism tends to increase. However, the relationship is complex and varies by region and other factors.</p>
+              <div className="grid md:grid gap-8">
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-800">Visitor Percent Change</h3>
+                  <div className="h-[600px] relative bg-white border border-gray-200 rounded-lg p-4">
+                    <iframe
+                    src="/2019_tourism_percents.html"
+                    width="100%"
+                    height="100%"
+                    style={{objectFit: 'contain'}}
+                    />
+                    <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 p-3 rounded-lg border border-gray-200">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
+                        <span className="text-gray-800 font-medium">More visitors than previous year</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                        <span className="text-gray-800 font-medium">Less visitors than previous year</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-800">Currency Percent Change</h3>
+                  <div className="h-[600px] relative bg-white border border-gray-200 rounded-lg p-4">
+                    <iframe
+                      src="/currency_map.html"
+                      width="100%"
+                      height="100%"
+                      style={{objectFit: 'contain'}}
+                    />
+                    <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 p-3 rounded-lg border border-gray-200">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
+                        <span className="text-gray-800 font-medium">USD strengthened vs currency</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                        <span className="text-gray-800 font-medium">USD weakened vs currency</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -84,43 +101,24 @@ export default function CurrencyImpact() {
           <div className="container mx-auto px-4">
             <div className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">Currency-Tourism Correlation</h2>
-              <iframe
-                  src="/currency_scatterplot.html"
-                  width="950%"
-                  height="620px"
-                  style={{ border: 'none' }}
-              />
               <div className="mt-4 text-gray-700">
-                <p className="text-lg">This visualization represents the correlation between currency strength and tourism. Each point in the analysis represents a country, with the y-axis showing the tourism percent change from the previous year and the x-axis showing the currency percent change compared to the USD.</p>
-                <p className="mt-2 text-lg">A positive correlation (0.42) suggests that as a country's currency weakens against the USD (making it cheaper for American tourists), tourism tends to increase. However, the relationship is complex and varies by region and other factors.</p>
+                <p className="text-lg">This visualization further investigates the correlation between currency strength and tourism. Each point in the analysis represents a country, with the y-axis showing the tourism percent change from the previous year and the x-axis showing the currency percent change compared to the USD.</p>
+                <p className="mt-2 text-lg">If a country's currency weakens against the USD (making it cheaper for American tourists), tourism should increase, however a weak correlation (0.42) suggests that this relationship is more complex and varies by region and other factors.</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Currency Linechart */}
-          <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800">Currency-Tourism Correlation</h2>
               <iframe
-                  src="/currency_line_chart.html"
+                  src="/scatter_with_lines_currency_tourism.html"
                   width="100%"
                   height="620px"
                   style={{ border: 'none' }}
               />
-              <div className="mt-4 text-gray-700">
-                <p className="text-lg">This visualization represents the correlation between currency strength and tourism. Each point in the analysis represents a country, with the y-axis showing the tourism percent change from the previous year and the x-axis showing the currency percent change compared to the USD.</p>
-                <p className="mt-2 text-lg">A positive correlation (0.42) suggests that as a country's currency weakens against the USD (making it cheaper for American tourists), tourism tends to increase. However, the relationship is complex and varies by region and other factors.</p>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Destination Showcase */}
-        <section className="py-12 bg-white">
+{/* Destination Showcase */}
+<section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-gray-800">Destinations Affected by Currency Fluctuations</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-800">Destinations and Their Currency Fluctuations</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
@@ -182,6 +180,25 @@ export default function CurrencyImpact() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Currency Linechart */}
+          <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">Currency-Tourism Correlation</h2>
+              <div className="mt-4 text-gray-700">
+                <p className="text-lg">This linechart gives a more detailed look at how a specific currency's strength has changed over time.</p>
+                <p className="mt-2 text-lg">The y-axis represents how many units of the local currency you could purchase that year with a single US dollar.</p>
+              </div>
+              <iframe
+                  src="/currency_line_chart.html"
+                  width="100%"
+                  height="620px"
+                  style={{ border: 'none' }}
+              />
             </div>
           </div>
         </section>
@@ -299,7 +316,7 @@ export default function CurrencyImpact() {
             </div>
             <div className="flex gap-8">
               <Link href="/" className="hover:underline">Home</Link>
-              <Link href="/tourism-trends" className="hover:underline">Tourism Trends</Link>
+              <Link href="/tourism-trends" className="hover:underline">Tourism Overview</Link>
               <Link href="/direct-flights" className="hover:underline">Direct Flights Impact</Link>
               <Link href="/currency-impact" className="hover:underline">Currency Strength Impact</Link>
             </div>
